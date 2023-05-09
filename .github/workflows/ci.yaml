@@ -4,7 +4,7 @@ on:
   push:
   workflow_dispatch: # manual start trigger
   schedule: # run at the scheduled time
-    - cron: '0 8 * * * ,30 17 * * 1'
+    - cron: '0 8 * * * '
 
 jobs:
   run-cypress-tests:
