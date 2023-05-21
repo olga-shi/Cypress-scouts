@@ -7,11 +7,11 @@ describe("demoblaze.com_logIn", () => {
     
     cy.get("#loginusername").click();
     
-    cy.get("#loginusername").type("olgacytest");
+    cy.get("#loginusername").invoke("val","olgacytest");
     
     cy.get("#loginpassword").click();
     
-    cy.get("#loginpassword").type("cytest");
+    cy.get("#loginpassword").invoke("val","cytest");
     
     cy.get("#logInModal button.btn-primary").click();
 
