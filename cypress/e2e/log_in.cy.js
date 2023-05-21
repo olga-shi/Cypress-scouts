@@ -16,6 +16,6 @@ describe("demoblaze.com_logIn", () => {
     cy.get("#logInModal button.btn-primary").click();
 
     cy.get("#nameofuser")
-        .should("contain", "olgacytest");
-  });
-});
+        .should("contain", "olgacytest")
+  })
+})
