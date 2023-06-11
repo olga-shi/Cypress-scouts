@@ -1,7 +1,7 @@
 describe("demoblaze.com_logIn", () => {
   Cypress._.times(3, () => {
     it("successful autorization test", () => {
-      cy.visit("https://www.demoblaze.com/index.html");
+      cy.visit("/index.html");
 
       cy.get("#login2").click();
 
