@@ -1,21 +1,25 @@
+import { login } from "../support/utils/login";
+
 describe("demoblaze.com_logIn", () => {
-  Cypress._.times(3, () => {
+  beforeEach(() => {
+    cy.visit("/");
+  });
+
+  Cypress._.times(1, () => {
     it("successful autorization test", () => {
-      cy.visit("/index.html");
-
-      cy.get("#login2").click();
-
-      cy.get("#loginusername").click();
-
-      cy.get("#loginusername").invoke("val", "olgacytest");
-
-      cy.get("#loginpassword").click();
-
-      cy.get("#loginpassword").invoke("val", "cytest");
-
-      cy.get("#logInModal button.btn-primary").click();
+      login("olgacytest", "cytest");
 
       cy.get("#nameofuser").should("contain", "olgacytest");
+    });
+  });
+
+  it("faled autorization test", () => {
+    login("olgacytest", "cytest1");
+
+    cy.window().then((win) => {
+      cy.stub(win, "alert").as("winAlert");
+
+      cy.get("@winAlert").should("be.calledWith", "Wrong password.");
     });
   });
 });
