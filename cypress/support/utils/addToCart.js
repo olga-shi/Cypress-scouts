@@ -1,13 +1,11 @@
 export const addToCart = () => {
   //click to the product block
-  cy.xpath(
-    '(//div[@class="card-block"] )[1]//a[contains(@class, "hrefch")]'
-  ).click();
+  cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
+    .should("be.visible")
+    .click();
 
   cy.url().should("include", "prod.html");
 
   // click to the 'Add to cart' button
-  cy.xpath(
-    '//a[contains(@class, "btn-success")] [contains(., "Add to cart")]'
-  ).click();
+  cy.get("#tbodyid a.btn-success").click();
 };
