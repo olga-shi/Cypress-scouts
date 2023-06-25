@@ -11,7 +11,7 @@ describe("demoblaze.add_a_product_to_the cart", () => {
 
   it("tests successful adding a phone to the cart", () => {
     //go to the mobile phones category
-    cy.get(".list-group > a:nth-child(2)").click();
+    cy.get(".list-group > a:nth-child(2)").should("be.visible").click();
 
     cy.wait("@category");
 
@@ -40,7 +40,7 @@ describe("demoblaze.add_a_product_to_the cart", () => {
 
   it("tests successful adding a laptop to the cart", () => {
     //go to the laptop category
-    cy.get(".list-group > a:nth-child(3)").click();
+    cy.get(".list-group > a:nth-child(3)").should("be.visible").click();
 
     cy.wait("@category");
 
@@ -69,7 +69,7 @@ describe("demoblaze.add_a_product_to_the cart", () => {
 
   it("tests successful adding a monitor to the cart", () => {
     //go to the monitors category
-    cy.get(".list-group > a:nth-child(4)").click();
+    cy.get(".list-group > a:nth-child(4)").should("be.visible").click();
     cy.wait("@category");
     // save product name to productName var
     cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
