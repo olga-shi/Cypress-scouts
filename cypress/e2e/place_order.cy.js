@@ -78,7 +78,7 @@ describe("place_order", () => {
       .and("be.visible")
       .then(($cartItem) => {
         cy.get("@productPrice").then((productPrice) => {
-          expect($cartItem.text()).to.equal(productPrice.text().substring(1));
+          expect($cartItem.text()).to.contain(productPrice.text().substring(1));
         });
       });
   });

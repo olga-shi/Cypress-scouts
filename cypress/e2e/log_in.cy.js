@@ -3,11 +3,14 @@ import { login } from "../support/utils/login";
 describe("demoblaze.com_logIn", () => {
   beforeEach(() => {
     cy.visit("/");
+    cy.intercept("POST", "/login").as("login");
   });
 
   Cypress._.times(1, () => {
     it("successful autorization test", () => {
       login("olgacytest", "cytest");
+
+      cy.wait("@login");
 
       cy.get("#nameofuser").should("contain", "olgacytest");
     });

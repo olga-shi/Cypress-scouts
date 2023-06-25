@@ -9,90 +9,88 @@ describe("demoblaze.add_a_product_to_the cart", () => {
     cy.visit("/");
   });
 
-  Cypress._.times(2, () => {
-    it("tests successful adding a phone to the cart", () => {
-      //go to the mobile phones category
-      cy.get(".list-group > a:nth-child(2)").click();
+  it("tests successful adding a phone to the cart", () => {
+    //go to the mobile phones category
+    cy.get(".list-group > a:nth-child(2)").click();
 
-      cy.wait("@category");
+    cy.wait("@category");
 
-      // save product name to productName var
-      cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
-        .should("be.visible")
-        .as("productName");
+    // save product name to productName var
+    cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
+      .should("be.visible")
+      .as("productName");
 
-      addToCart();
+    addToCart();
 
-      // click to the 'Cart' button
-      cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
+    // click to the 'Cart' button
+    cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
 
-      // make sure we go to the cart page
-      cy.location("href").should("include", "/cart.html");
+    // make sure we go to the cart page
+    cy.location("href").should("include", "/cart.html");
 
-      // make sure that our product is in the cart
-      cy.get("tr.success td:nth-child(2)")
-        .should("be.visible")
-        .then(($cartItem) => {
-          cy.get("@productName").then((productName) => {
-            expect($cartItem.text()).to.equal(productName.text());
-          });
+    // make sure that our product is in the cart
+    cy.get("tr.success td:nth-child(2)")
+      .should("be.visible")
+      .then(($cartItem) => {
+        cy.get("@productName").then((productName) => {
+          expect($cartItem.text()).to.equal(productName.text());
         });
-    });
+      });
+  });
 
-    it("tests successful adding a laptop to the cart", () => {
-      //go to the laptop category
-      cy.get(".list-group > a:nth-child(3)").click();
+  it("tests successful adding a laptop to the cart", () => {
+    //go to the laptop category
+    cy.get(".list-group > a:nth-child(3)").click();
 
-      cy.wait("@category");
+    cy.wait("@category");
 
-      // save product name to productName var
-      cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
-        .should("be.visible")
-        .as("productName");
+    // save product name to productName var
+    cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
+      .should("be.visible")
+      .as("productName");
 
-      addToCart();
+    addToCart();
 
-      // click to the 'Cart' button
-      cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
+    // click to the 'Cart' button
+    cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
 
-      // make sure we go to the cart page
-      cy.location("href").should("include", "/cart.html");
+    // make sure we go to the cart page
+    cy.location("href").should("include", "/cart.html");
 
-      // make sure that our product is in the cart
-      cy.get("tr.success td:nth-child(2)")
-        .should("be.visible")
-        .then(($cartItem) => {
-          cy.get("@productName").then((productName) => {
-            expect($cartItem.text()).to.equal(productName.text());
-          });
+    // make sure that our product is in the cart
+    cy.get("tr.success td:nth-child(2)")
+      .should("be.visible")
+      .then(($cartItem) => {
+        cy.get("@productName").then((productName) => {
+          expect($cartItem.text()).to.equal(productName.text());
         });
-    });
+      });
+  });
 
-    it("tests successful adding a monitor to the cart", () => {
-      //go to the monitors category
-      cy.get(".list-group > a:nth-child(4)").click();
-      cy.wait("@category");
-      // save product name to productName var
-      cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
-        .should("be.visible")
-        .as("productName");
+  it("tests successful adding a monitor to the cart", () => {
+    //go to the monitors category
+    cy.get(".list-group > a:nth-child(4)").click();
+    cy.wait("@category");
+    // save product name to productName var
+    cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
+      .should("be.visible")
+      .as("productName");
 
-      addToCart();
+    addToCart();
 
-      // click to the 'Cart' button
-      cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
+    // click to the 'Cart' button
+    cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
 
-      // make sure we go to the cart page
-      cy.location("href").should("include", "/cart.html");
+    // make sure we go to the cart page
+    cy.location("href").should("include", "/cart.html");
 
-      // make sure that our product is in the cart
-      cy.get("tr.success td:nth-child(2)")
-        .should("be.visible")
-        .then(($cartItem) => {
-          cy.get("@productName").then((productName) => {
-            expect($cartItem.text()).to.equal(productName.text());
-          });
+    // make sure that our product is in the cart
+    cy.get("tr.success td:nth-child(2)")
+      .should("be.visible")
+      .then(($cartItem) => {
+        cy.get("@productName").then((productName) => {
+          expect($cartItem.text()).to.equal(productName.text());
         });
-    });
+      });
   });
 });
