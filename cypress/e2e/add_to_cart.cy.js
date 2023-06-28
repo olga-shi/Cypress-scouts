@@ -5,28 +5,29 @@ import { addToCart } from "../support/utils/addToCart";
 describe("demoblaze.add_a_product_to_the cart", () => {
   beforeEach(() => {
     // Request declaration
-    cy.intercept("POST", "/bycat").as("category");
     cy.visit("/");
+    cy.intercept("POST", "/bycat").as("category");
+    cy.intercept("POST", "/view").as("viewCart");
   });
 
   it("tests successful adding a phone to the cart", () => {
     //go to the mobile phones category
     cy.get(".list-group > a:nth-child(2)").should("be.visible").click();
-
+    // wait category loading
     cy.wait("@category");
 
-    // save product name to productName var
+    // save product name to productName alias
     cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
       .should("be.visible")
       .as("productName");
-
+    // add product to the cart
     addToCart();
 
     // click to the 'Cart' button
     cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
 
-    // make sure we go to the cart page
-    cy.location("href").should("include", "/cart.html");
+    // wait cart loading
+    cy.wait("@viewCart");
 
     // make sure that our product is in the cart
     cy.get("tr.success td:nth-child(2)")
@@ -42,20 +43,22 @@ describe("demoblaze.add_a_product_to_the cart", () => {
     //go to the laptop category
     cy.get(".list-group > a:nth-child(3)").should("be.visible").click();
 
+    // wait category loading
     cy.wait("@category");
 
-    // save product name to productName var
+    // save product name to productName alias
     cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
       .should("be.visible")
       .as("productName");
-
+    // add product to the cart
     addToCart();
 
     // click to the 'Cart' button
     cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
 
-    // make sure we go to the cart page
-    cy.location("href").should("include", "/cart.html");
+    // wait cart loading
+
+    cy.wait("@viewCart");
 
     // make sure that our product is in the cart
     cy.get("tr.success td:nth-child(2)")
@@ -70,19 +73,21 @@ describe("demoblaze.add_a_product_to_the cart", () => {
   it("tests successful adding a monitor to the cart", () => {
     //go to the monitors category
     cy.get(".list-group > a:nth-child(4)").should("be.visible").click();
+
+    // wait category loading
     cy.wait("@category");
-    // save product name to productName var
+
+    // save product name to productName alias
     cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
       .should("be.visible")
       .as("productName");
-
+    // add product to the cart
     addToCart();
 
     // click to the 'Cart' button
     cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
-
-    // make sure we go to the cart page
-    cy.location("href").should("include", "/cart.html");
+    // wait cart loading
+    cy.wait("@viewCart");
 
     // make sure that our product is in the cart
     cy.get("tr.success td:nth-child(2)")
