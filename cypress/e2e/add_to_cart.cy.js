@@ -17,11 +17,11 @@ describe("demoblaze.add_a_product_to_the cart", () => {
     cy.wait("@category");
 
     // save product name to productName alias
-    cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
-      .should("be.visible")
-      .as("productName");
+    cy.contains('.hrefch', 'Samsung galaxy s6')
+    .should("be.visible")
+    .as("productName");
     // add product to the cart
-    addToCart();
+    addToCart("Samsung galaxy s6");
 
     // click to the 'Cart' button
     cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
@@ -47,11 +47,11 @@ describe("demoblaze.add_a_product_to_the cart", () => {
     cy.wait("@category");
 
     // save product name to productName alias
-    cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
-      .should("be.visible")
-      .as("productName");
+    cy.contains('.hrefch', 'Sony vaio i5')
+    .should("be.visible")
+    .as("productName");
     // add product to the cart
-    addToCart();
+    addToCart("Sony vaio i5");
 
     // click to the 'Cart' button
     cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();
@@ -72,17 +72,20 @@ describe("demoblaze.add_a_product_to_the cart", () => {
 
   it("tests successful adding a monitor to the cart", () => {
     //go to the monitors category
-    cy.get(".list-group > a:nth-child(4)").should("be.visible").click();
+    cy.get(".list-group > a:nth-child(4)").should("be.visible")
+    .click();
 
     // wait category loading
     cy.wait("@category");
 
     // save product name to productName alias
-    cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
+    cy.contains('.hrefch', 'Apple monitor 24')
       .should("be.visible")
       .as("productName");
+
+      
     // add product to the cart
-    addToCart();
+    addToCart('Apple monitor 24');
 
     // click to the 'Cart' button
     cy.get("#navbarExample ul.navbar-nav li:nth-child(4) #cartur").click();

@@ -1,8 +1,9 @@
-export const addToCart = () => {
+export const addToCart = (product) => {
   // click to the product block
-  cy.get(":nth-child(1) > .card > .card-block > .card-title > .hrefch")
+  cy.contains('.hrefch', product)
     .should("be.visible")
     .click();
+
   // make shure we are on the product page
   cy.url().should("include", "prod.html");
 

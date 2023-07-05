@@ -10,7 +10,7 @@ describe("place_order", () => {
       .should("be.visible")
       .as("productPrice");
 
-    addToCart();
+    addToCart("Samsung galaxy s6");
 
     // click to the 'Cart' button
     cy.get('a[id="cartur"]').click();
