@@ -1,7 +1,9 @@
 export const addToCart = (product) => {
   // click to the product block
   cy.contains('.hrefch', product)
-    .should("be.visible")
+    .should("be.visible");
+   
+    cy.contains('.hrefch', product)
     .click();
 
   // make shure we are on the product page
