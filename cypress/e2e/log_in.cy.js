@@ -2,6 +2,7 @@ import { login } from "../support/utils/login";
 
 describe("demoblaze.com_logIn", () => {
   beforeEach(() => {
+        // Request declaration
     cy.visit("/");
     cy.intercept("POST", "/login").as("login");
   });
@@ -12,7 +13,7 @@ describe("demoblaze.com_logIn", () => {
 
       cy.wait("@login");
 
-      cy.get("#nameofuser").should("contain", "olgacytest");
+      cy.contains("#nameofuser", "olgacytest").should("be.visible");
     });
   });
 
